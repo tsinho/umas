@@ -1,0 +1,295 @@
+/* 
+  * 无礁节日祝福邮件自动发送系统 
+  * 作者：无礁 
+  * QQ：1722791510 
+  * 邮箱：tsinho@qq.com 
+  */
+
+/* 全局样式 */
+body {
+    background-color: #f8f9fa;
+    font-family: 'Microsoft YaHei', Arial, sans-serif;
+}
+
+/* 侧边栏样式 */
+.sidebar {
+    background-color: #0455EA;
+    color: white;
+    min-height: 100vh;
+}
+
+.sidebar a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin: 5px 10px;
+    transition: all 0.3s ease;
+}
+
+.sidebar a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.sidebar a.active {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* 卡片样式 */
+.card {
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.card-header {
+    background-color: #0455EA;
+    color: white;
+    border-radius: 8px 8px 0 0;
+}
+
+/* 按钮样式 */
+.btn-primary {
+    background-color: #0455EA;
+    border-color: #0455EA;
+}
+
+.btn-primary:hover {
+    background-color: #0344c4;
+    border-color: #0344c4;
+}
+
+/* 统计卡片样式 */
+.stat-card {
+    text-align: center;
+    padding: 30px;
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.stat-number {
+    font-size: 36px;
+    font-weight: bold;
+    color: #0455EA;
+}
+
+.stat-label {
+    color: #666;
+    margin-top: 10px;
+}
+
+/* 日志项样式 */
+.log-item {
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+    transition: all 0.3s ease;
+}
+
+.log-item:hover {
+    background-color: #f8f9fa;
+}
+
+.log-time {
+    font-size: 12px;
+    color: #999;
+}
+
+.log-content {
+    margin: 10px 0;
+}
+
+.log-ip {
+    font-size: 12px;
+    color: #666;
+}
+
+.log-type-security {
+    border-left: 4px solid #dc3545;
+    background-color: #f8d7da;
+}
+
+.log-type-system {
+    border-left: 4px solid #28a745;
+    background-color: #d4edda;
+}
+
+.log-type-operation {
+    border-left: 4px solid #ffc107;
+    background-color: #fff3cd;
+}
+
+/* 联系人项样式 */
+.contact-item {
+    background-color: white;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.contact-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.contact-item h3 {
+    margin-top: 0;
+    color: #0455EA;
+}
+
+.contact-status {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.contact-status-active {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.contact-status-inactive {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+/* 模板项样式 */
+.template-item {
+    background-color: white;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.template-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.template-item h3 {
+    margin-top: 0;
+    color: #0455EA;
+}
+
+/* 自定义字段样式 */
+.custom-fields {
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.custom-field-item {
+    display: inline-block;
+    background-color: #e9ecef;
+    padding: 5px 10px;
+    border-radius: 3px;
+    margin: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.custom-field-item:hover {
+    background-color: #dee2e6;
+    transform: translateY(-2px);
+}
+
+/* 登录页面样式 */
+.login-container {
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+    margin: 100px auto;
+}
+
+.login-title {
+    color: #0455EA;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* API URL样式 */
+.api-url {
+    background-color: #f8f9fa;
+    padding: 10px;
+    border-radius: 5px;
+    font-family: monospace;
+    word-break: break-all;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .sidebar {
+        min-height: auto;
+        padding-bottom: 20px;
+    }
+    
+    .sidebar a {
+        display: inline-block;
+        margin: 5px;
+    }
+    
+    .stat-card {
+        padding: 20px;
+    }
+    
+    .stat-number {
+        font-size: 24px;
+    }
+}
+
+/* 表单样式 */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-control {
+    border-radius: 4px;
+}
+
+/* 标签页样式 */
+.nav-tabs {
+    margin-bottom: 20px;
+}
+
+.nav-tabs .nav-link {
+    color: #666;
+}
+
+.nav-tabs .nav-link.active {
+    color: #0455EA;
+    border-color: #0455EA;
+}
+
+/* 警告框样式 */
+.alert {
+    border-radius: 4px;
+}
+
+/* 加载动画 */
+.loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(0, 85, 234, 0.3);
+    border-radius: 50%;
+    border-top-color: #0455EA;
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
